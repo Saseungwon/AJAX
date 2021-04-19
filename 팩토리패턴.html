@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>김주헌</div>
+    <div class="sil">사승원</div>
+    <div>정찬웅</div>
+    <div class="sil">황미선</div>
+    <script>
+        var v_daejang = {};
+        v_daejang["0"] = "심이안";
+
+        //팩토리패턴
+        function withoutNew(p_ssel){
+            return new Mydom(p_ssel);
+        }
+
+        var Mydom = function(p_sel){
+            var v_eles = document.querySelectorAll(p_sel);
+            this.length = v_eles.length;
+            for(var i=0; i< v_eles.length; i++){
+                this[i] = v_eles[i]
+            }
+        }    
+      
+        var lovelyYgy = withoutNew("div");
+        lovelyYgy[3].style.fontSize="5em";
+
+
+        /*
+        var v_sils = new Mydom(".sil");
+        v_sils[0].style.backgroundColor="blue";
+
+        var v_divs = new Mydom("div");
+        console.log(v_divs);
+        */ 
+        //v_divs[0].innerHTML = "배열도 결국 JSON";
+        
+    </script>    
+</body>
+</html>

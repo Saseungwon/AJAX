@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="id_form">
+       남기문 좋아해<input type=text name="ngm1" value="" required><br>
+       남기문 아주 싫어해<input type=text name="ngm2" value="" required><br>
+       <input id="id_btn" type=submit value="전송">
+    </form>
+<script>
+    var v_form = document.querySelector("#id_form"); 
+    v_form.onsubmit = function(){
+        event.preventDefault(); 
+        /* 
+            아작스 코드 
+        */
+    }
+     
+/*     document.querySelector("#id_btn").onclick=function(){
+        document.forms[0].submit();  // 전송
+        event.preventDefault(); // submit 버튼의 전송기능 막아버리기
+    } */
+    
+</script>
+</body>
+</html>

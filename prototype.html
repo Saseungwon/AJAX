@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+  // 그동안 우리의 객체 만들던 방식
+  var v_obj = {
+//      name: "주정흔",
+//      getName: function(){
+//          alert(this.name);
+//      }
+  };
+/*  
+  v_obj.name = "주정흔";
+  v_obj.getName = function(){
+      alert(this.name);
+  }
+  v_obj.getName();
+*/
+
+//자바의 class개념으로 만든 객체가 없었음, class 키워드가 있음(es6버젼부터)
+// es5 버젼까지은 function 키워드가 class 키워드 역할도 같이 함
+
+var o_saram = function(p_name,p_age){
+    this.name = p_name;
+    this.age = p_age;
+    /*     
+    this.getName = function(){
+        return this.name;
+    }
+    this.setName = function(p_ag){
+        this.age = p_ag;
+    }
+     */
+}
+//메모리 절약을 위해서 나온 prototype속성
+    //prototype 안에 한 번만 만들어 놓고 공유해서 사용함 
+o_saram.prototype.getName = function(){
+    return this.name; 
+}
+o_saram.prototype.getAge = function(){
+    return this.age; 
+}
+
+
+
+// function call 하는 방법에 의존 
+var v_ygy = new o_saram("윤가영",20);
+var v_yhj = new o_saram("염호준",200);
+// console.log(v_yhj);
+// console.log(v_ygy);
+
+alert(v_ygy.getName());
+alert(v_yhj.getName());
+
+// v_yhj.setName("500");
+// alert(v_yhj.age);
+</script>

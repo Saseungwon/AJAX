@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    /* 
+    var osh = {}; 
+    p_key = "aaa";
+    osh[p_key] = "예예예";  osh.p_key와 헷갈리지 말기  
+    console.log(osh);
+    */
+//java.util.HashMap  put(key,value),get(key),replace(key,value),remove(key),clear(), size()
+// prototype을 이용해서 위의 메소드를 가진 HashMap을 만들기 
+var java = {}; 
+java.util = {}; 
+java.util.HashMap = function(){
+    this.length = 0 ; //생성할 때 0으로 초기화
+}
+
+//아래처럼 prototype을 사용해야 메모리가 절약됨
+java.util.HashMap.prototype.put= function(p_key,p_val){
+    this[p_key] = p_val; 
+    this.length++; 
+}
+
+java.util.HashMap.prototype.get= function(p_key){
+    return this[p_key]; 
+}
+
+java.util.HashMap.prototype.replace= function(p_key,p_val){
+    this[p_key] = p_val; 
+}   
+
+java.util.HashMap.prototype.remove= function(p_key){
+    delete this[p_key]; // 넘버링 인덱스가 아니어서 당글 필요가 없음
+    this.length--; 
+}
+
+java.util.HashMap.prototype.clear= function(){
+    for(var v_attr in this){
+        delete this[v_attr]; 
+    }
+    this.length = 0;
+}
+
+java.util.HashMap.prototype.size= function(){
+    return this.length;
+}
+
+
+//확인테스트
+var ygyHashMap = new java.util.HashMap();
+ygyHashMap.put("ggg",{"name":"염호준","alias":"잠팅이"});
+console.log(ygyHashMap);
+
+var yhjHashMap = new java.util.HashMap();
+yhjHashMap.put("zzz",{"name":"대장님","alias":"하틍네일"});
+yhjHashMap.clear();
+//console.log(yhjHashMap);
+
+yhjHashMap.put("oneMore","한석귱");
+console.log(yhjHashMap);
+
+
+
+</script>
+

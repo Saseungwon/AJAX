@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 즉시 실행 함수 : (function)후 ();로 바로 실행시킴
+            // 딱 한 번만 사용할 필요가 있는 함수, 
+            // 함수가 아니어도 한 번만 실행할 필요가 있는 코드블락을 묶어줄 때,
+            // 일반적으로는 잘 볼 수 없는데 라이브러리에는 꼭 1개 이상씩 있음 
+
+        
+    function onlyOne(){
+        var a=10; 
+        var b=20;
+        var c=30;
+        var sum = a + b + c;
+        return sum;
+     }
+
+    var sum = (function(){
+        var a=10; 
+        var b=20;
+        var c=30;
+        return a+b+c;
+     })();
+
+
+       /*  
+       (function (){
+            alert("알림!");
+        })(); 
+        */ 
+
+        //위와 동일한 실행 함수
+        /*
+         !function (){           //-->이렇게 쓰면 안 좋음  
+            alert("알림!");
+        }(); 
+         */
+
+
+        (function (p_msg){
+        alert("흥!"+p_msg);
+        })(" 영흔이 바봉");
+
+
+    
+    </script>
+</body>
+</html>

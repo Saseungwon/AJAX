@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구글뉴스</title>
+</head>
+<body>
+    검색어 <input id="id_sch" type=text value=""><input id="id_yhj" type=button value="검색">
+    <div id="id_disp"></div>
+<script>
+    //open api 사용할 땐 먼저 아작스로 바로 요청을 받을 수 있는지 확인
+    var v_schWord = document.querySelector("#id_sch");
+    var v_disp = document.querySelector("#id_disp");
+    document.querySelector("#id_yhj").onclick = function(){
+        var v_ajax = new XMLHttpRequest();
+        v_ajax.open("get","quakquak.php?ygy="+ v_schWord.value,true);
+        v_ajax.onreadystatechange = function(){
+            if(v_ajax.readyState == 4 && v_ajax.status == 200){
+               //console.log(JSON.parse(v_ajax.responseText).channel.item); 
+               var v_newsItems =  JSON.parse(v_ajax.responseText).channel.item;
+               var v_tblStr = "<table border=1>";
+               v_tblStr += "<tr><th>순번</th><th>제목</th><th>출처</th></tr>";
+               for(var i=0; i< v_newsItems.length; i++){
+                   v_tblStr += "<tr>";
+                   v_tblStr += "<td>" + (i+1) +"</td>"; 
+                   v_tblStr += "<td><a target='_blank'  href='" + v_newsItems[i].link  + "'  >" + v_newsItems[i].title + "</a></td>"; 
+                   v_tblStr += "<td>" + v_newsItems[i].source + "</td>"; 
+                   v_tblStr += "</tr>";
+               }
+               v_tblStr += "</table>";
+               v_disp.innerHTML = v_tblStr;                    
+            }
+        }
+        v_ajax.send();
+    }
+</script>
+</body>
+</html>
